@@ -47,8 +47,8 @@ export function CheckpointCard({ checkpoint }: CheckpointCardProps) {
       layout
       onClick={() => setIsExpanded(!isExpanded)}
       className={clsx(
-        "relative z-10 w-full max-w-lg rounded-3xl backdrop-blur-xl border border-white/10 cursor-pointer overflow-hidden group",
-        "bg-(--color-charcoal)/90 shadow-2xl transition-colors hover:bg-(--color-moss)/40 texture-overlay",
+        "relative z-10 w-full max-w-lg lg:max-w-none rounded-3xl backdrop-blur-xl border border-white/10 cursor-pointer overflow-hidden group",
+        "bg-(--color-charcoal)/90 shadow-2xl transition-all duration-300 hover:bg-(--color-moss)/40 lg:hover:scale-[1.02] lg:hover:border-white/30 texture-overlay",
         "mb-12 ml-auto flex flex-col"
       )}
     >
@@ -75,6 +75,10 @@ export function CheckpointCard({ checkpoint }: CheckpointCardProps) {
       <div className={clsx("relative z-20 p-5 md:p-6", checkpoint.imageUrl ? "-mt-8" : "")}>
         <motion.div layout className="flex justify-between items-start mb-4">
           <div className="flex items-center gap-3 text-sm font-sans text-(--color-dawn) tracking-widest uppercase bg-(--color-charcoal) px-3 py-1.5 rounded-full border border-white/10 shadow-lg">
+            <div className="flex items-center text-white/70 font-medium">
+              <span>Day {checkpoint.day}</span>
+            </div>
+            <div className="w-[1px] h-3 bg-white/20" />
             {checkpoint.time && (
               <div className="flex items-center gap-1.5">
                 <Clock size={14} />

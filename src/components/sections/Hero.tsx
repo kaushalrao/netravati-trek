@@ -20,7 +20,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 animate-pulse">
+      <div className="mt-16 md:mt-24 flex flex-col items-center gap-4 animate-pulse">
         <span className="font-sans text-xs tracking-[0.2em] text-(--color-charcoal)/60 uppercase font-semibold">
           Begin Journey
         </span>

@@ -38,19 +38,32 @@ export function ExpeditionHUD() {
   );
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 md:bottom-8 md:left-1/2 md:-translate-x-1/2 md:w-auto md:min-w-[400px] z-50">
+    <div className="fixed bottom-4 left-4 right-4 md:bottom-8 md:left-1/2 md:-translate-x-1/2 md:w-auto md:min-w-[400px] z-50 lg:hidden">
       <div className="bg-(--color-canopy)/80 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-2xl flex flex-col gap-3">
         <div className="flex justify-between items-center text-xs font-data text-(--color-mist) uppercase tracking-widest">
           <span>Expedition Progress</span>
           <span className="text-(--color-dawn)">{Math.round(scrollProgress)}%</span>
         </div>
         
-        {/* Progress Bar */}
-        <div className="w-full h-1.5 bg-black/50 rounded-full overflow-hidden">
-          <div 
-            className="h-full bg-gradient-to-r from-(--color-moss) to-(--color-dawn) rounded-full transition-all duration-150 ease-out"
-            style={{ width: `${scrollProgress}%` }}
-          />
+        {/* Progress Bar with Day Markers */}
+        <div className="relative">
+          <div className="w-full h-1.5 bg-black/50 rounded-full relative overflow-hidden">
+            {/* Dividers */}
+            <div className="absolute top-0 bottom-0 left-[33.33%] w-[2px] bg-(--color-charcoal) z-10" />
+            <div className="absolute top-0 bottom-0 left-[66.66%] w-[2px] bg-(--color-charcoal) z-10" />
+            
+            <div 
+              className="absolute top-0 left-0 h-full bg-gradient-to-r from-(--color-moss) to-(--color-dawn) rounded-full transition-all duration-150 ease-out"
+              style={{ width: `${scrollProgress}%` }}
+            />
+          </div>
+          
+          {/* Day Labels */}
+          <div className="flex justify-between w-full mt-1.5 px-4 absolute top-full">
+             <span className="text-[9px] font-sans tracking-widest text-(--color-mist)/40 uppercase transform -translate-x-1/2">Day 1</span>
+             <span className="text-[9px] font-sans tracking-widest text-(--color-mist)/40 uppercase transform -translate-x-1/2">Day 2</span>
+             <span className="text-[9px] font-sans tracking-widest text-(--color-mist)/40 uppercase transform translate-x-4">Day 3</span>
+          </div>
         </div>
 
         {/* Stats */}

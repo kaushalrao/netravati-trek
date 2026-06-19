@@ -83,12 +83,14 @@ export function TimelineDay({ dayNumber, title, subtitle, checkpoints, metadata 
       <div 
         ref={coverRef}
         className={clsx(
-          "relative w-full min-h-[75svh] md:min-h-[65vh] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl mb-12 md:mb-24 border border-white/10 flex flex-col justify-between",
+          "relative w-full min-h-[75svh] md:min-h-[65vh] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl mb-12 md:mb-24 border border-white/10 flex flex-col lg:grid lg:grid-cols-12",
           metadata.theme === "forest" ? "bg-gradient-to-b from-[#1a2920] to-[#0a110d]" :
           metadata.theme === "exploration" ? "bg-gradient-to-b from-[#2c4e5c] to-[#12232b]" :
           "bg-gradient-to-b from-[#b87c4c] to-[#4a301f]"
         )}
       >
+        {/* Right Side Backgrounds (Desktop) / Full Background (Mobile) */}
+        <div className="absolute inset-0 lg:left-auto lg:w-[60%] lg:h-full lg:relative pointer-events-none lg:col-span-7 lg:col-start-6">
         {/* Topographic Noise Texture */}
         <div className="absolute inset-0 opacity-10 mix-blend-overlay pointer-events-none" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")" }} />
 
@@ -121,9 +123,10 @@ export function TimelineDay({ dayNumber, title, subtitle, checkpoints, metadata 
             </>
           )}
         </div>
+        </div>
 
-        {/* Cover Content */}
-        <div className="relative z-10 flex flex-col h-full p-8 md:p-12">
+        {/* Cover Content (Left Side Desktop) */}
+        <div className="relative z-10 flex flex-col h-full justify-between p-8 md:p-12 lg:col-span-5 lg:col-start-1 lg:row-start-1 bg-black/20 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none">
           
           {/* Top Row: Progress */}
           <div className="flex items-center gap-4 w-full opacity-80">
@@ -211,15 +214,36 @@ export function TimelineDay({ dayNumber, title, subtitle, checkpoints, metadata 
       </div>
 
       {/* --- TIMELINE CHECKPOINTS --- */}
-      <div className="relative">
-        <div className="flex flex-col gap-8 md:gap-16">
+      <div className="relative lg:grid lg:grid-cols-12 lg:gap-12">
+        {/* Desktop Sticky Journey Progression */}
+        <div className="hidden lg:block lg:col-span-4 relative">
+          <div className="sticky top-32 flex flex-col gap-6">
+            <div className="flex items-center gap-4 mb-4 opacity-80">
+              <span className="font-sans text-xs text-white tracking-[0.3em] font-medium uppercase">Day {dayNumber} Route</span>
+              <div className="flex-1 h-[1px] bg-white/20" />
+            </div>
+            
+            <div className="relative pl-6 border-l-2 border-white/10 flex flex-col gap-8">
+              {checkpoints.map((cp, idx) => (
+                <div key={`route-${cp.id}`} className="relative">
+                  <div className={`absolute -left-[31px] w-4 h-4 rounded-full border-4 border-(--color-charcoal) ${idx === 0 ? 'bg-(--color-dawn)' : idx === checkpoints.length - 1 ? 'bg-(--color-moss)' : 'bg-white/40'}`} />
+                  <span className="font-sans text-sm text-white/80 font-medium">{cp.title}</span>
+                  <div className="text-xs text-white/40 mt-1 uppercase tracking-widest">{cp.time}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Checkpoint Cards */}
+        <div className="lg:col-span-8 flex flex-col gap-8 md:gap-16">
           {checkpoints.map((cp, idx) => (
             <div 
               key={cp.id} 
               ref={el => { cardsRef.current[idx] = el; }}
-              className={`w-full flex ${idx % 2 === 0 ? 'md:justify-start' : 'md:justify-end'}`}
+              className={`w-full flex ${idx % 2 === 0 ? 'md:justify-start lg:justify-end' : 'md:justify-end lg:justify-end'}`}
             >
-              <div className="w-full md:w-[60%] lg:w-[45%]">
+              <div className="w-full md:w-[60%] lg:w-[85%]">
                 <CheckpointCard checkpoint={cp} />
               </div>
             </div>
