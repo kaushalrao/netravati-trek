@@ -62,7 +62,7 @@ export default function Home() {
             }}
           />
 
-          <StoryInterstitial text="The mountains ask for nothing, but they give you everything. Time slows down in the estate." align="left" />
+          <StoryInterstitial text="Relax and unwind. Time slows down at the estate." align="left" />
 
           <TimelineDay
             dayNumber={3}
