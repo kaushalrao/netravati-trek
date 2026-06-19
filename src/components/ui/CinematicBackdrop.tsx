@@ -32,7 +32,7 @@ export function CinematicBackdrop() {
   const sunY = useTransform(
     scrollYProgress, 
     [0, 0.2, 0.35, 0.4, 0.55, 0.7, 0.75, 0.9, 1], 
-    ["10%", "120%", "120%", "10%", "120%", "120%", "10%", "120%", "120%"]
+    ["10vh", "120vh", "120vh", "10vh", "120vh", "120vh", "10vh", "120vh", "120vh"]
   );
   
   const sunOpacity = useTransform(
@@ -83,7 +83,7 @@ export function CinematicBackdrop() {
     <div ref={containerRef} className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-black">
       
       {/* --- SKY LAYER --- */}
-      <motion.div className="absolute inset-0" style={{ background: skyBackground }} />
+      <motion.div className="absolute inset-0 transform-gpu" style={{ background: skyBackground }} />
 
       {/* --- NOISE TEXTURE OVERLAY --- */}
       <div className="absolute inset-0 opacity-20 mix-blend-overlay" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")" }} />
@@ -100,37 +100,37 @@ export function CinematicBackdrop() {
 
       {/* --- SUN / MOON --- */}
       <motion.div 
-        className="absolute left-[60%] w-40 h-40 rounded-full blur-3xl"
-        style={{ top: sunY, opacity: sunOpacity, backgroundColor: sunColor }}
+        className="absolute top-0 left-[60%] w-40 h-40 rounded-full blur-3xl transform-gpu"
+        style={{ y: sunY, opacity: sunOpacity, backgroundColor: sunColor }}
       />
       <motion.div 
-        className="absolute left-[65%] w-24 h-24 rounded-full blur-md"
-        style={{ top: sunY, opacity: sunOpacity, backgroundColor: "#ffffff" }}
+        className="absolute top-0 left-[65%] w-24 h-24 rounded-full blur-md transform-gpu"
+        style={{ y: sunY, opacity: sunOpacity, backgroundColor: "#ffffff" }}
       />
 
       {/* --- DEEP BACKGROUND (Distant Mountains) --- */}
-      <motion.div className="absolute bottom-20 left-0 right-0 w-full" style={{ y: layer1Y, opacity: mountainOpacity }}>
+      <motion.div className="absolute bottom-20 left-0 right-0 w-full transform-gpu" style={{ y: layer1Y, opacity: mountainOpacity }}>
         <motion.svg viewBox="0 0 1440 400" className="w-full h-auto drop-shadow-2xl" preserveAspectRatio="none" style={{ fill: mountainColor }}>
           <path d="M0,250 C200,100 400,300 600,150 C800,0 1000,200 1200,100 C1300,50 1400,150 1440,180 L1440,400 L0,400 Z" />
         </motion.svg>
       </motion.div>
 
       {/* --- MID BACKGROUND (Rolling Forest Hills) --- */}
-      <motion.div className="absolute -bottom-10 left-0 right-0 w-full" style={{ y: layer2Y }}>
+      <motion.div className="absolute -bottom-10 left-0 right-0 w-full transform-gpu" style={{ y: layer2Y }}>
         <motion.svg viewBox="0 0 1440 320" className="w-[150vw] md:w-full h-auto drop-shadow-2xl -ml-[10vw]" preserveAspectRatio="none" style={{ fill: midgroundColor }}>
           <path d="M0,160 C300,250 500,50 700,150 C900,250 1100,100 1440,180 L1440,320 L0,320 Z" />
         </motion.svg>
       </motion.div>
 
       {/* --- NEAR MIDGROUND (Steep Ridge) --- */}
-      <motion.div className="absolute -bottom-20 left-0 right-0 w-full" style={{ y: layer3Y }}>
+      <motion.div className="absolute -bottom-20 left-0 right-0 w-full transform-gpu" style={{ y: layer3Y }}>
         <motion.svg viewBox="0 0 1440 320" className="w-[200vw] md:w-[120vw] h-auto drop-shadow-2xl -ml-[20vw]" preserveAspectRatio="none" style={{ fill: foregroundColor }}>
           <path d="M0,300 C200,150 400,280 600,200 C800,120 1000,250 1440,100 L1440,320 L0,320 Z" />
         </motion.svg>
       </motion.div>
 
       {/* --- FOREGROUND SILHOUETTES (Fast Parallax Trees) --- */}
-      <motion.div className="absolute bottom-0 left-0 right-0 w-full opacity-90" style={{ y: foregroundY }}>
+      <motion.div className="absolute bottom-0 left-0 right-0 w-full opacity-90 transform-gpu" style={{ y: foregroundY }}>
         <svg viewBox="0 0 1440 320" className="w-full h-auto fill-black/80 drop-shadow-[0_-10px_20px_rgba(0,0,0,0.5)]">
           {/* Massive Abstract Pine Trees framing the edges */}
           <path d="M-50,320 L-50,0 L20,100 L0,150 L60,220 L30,260 L80,320 Z" />
@@ -164,14 +164,14 @@ function ParticleEngine({ scrollYProgress }: { scrollYProgress: MotionValue<numb
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={`fog-${i}`}
-            className="absolute w-64 h-32 md:w-96 md:h-48 rounded-full bg-white opacity-10 blur-3xl"
+            className="absolute top-0 w-64 h-32 md:w-96 md:h-48 rounded-full bg-white opacity-10 blur-3xl transform-gpu"
             initial={{ 
               left: `${Math.random() * 100}%`, 
-              top: `${(Math.random() * 50) + 50}%` // Keep fog lower down
+              y: `${(Math.random() * 50) + 50}vh` // Keep fog lower down
             }}
             animate={{ 
               x: [0, (Math.random() > 0.5 ? 1 : -1) * 200, 0],
-              y: [0, -50, 0],
+              y: [`${(Math.random() * 50) + 50}vh`, `${(Math.random() * 50)}vh`, `${(Math.random() * 50) + 50}vh`],
             }}
             transition={{
               duration: Math.random() * 20 + 20,
@@ -188,13 +188,13 @@ function ParticleEngine({ scrollYProgress }: { scrollYProgress: MotionValue<numb
         {[...Array(25)].map((_, i) => (
           <motion.div
             key={`ember-${i}`}
-            className="absolute w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-[#ff7b00] shadow-[0_0_10px_2px_#ff7b00]"
+            className="absolute top-0 w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-[#ff7b00] shadow-[0_0_10px_2px_#ff7b00] transform-gpu"
             initial={{ 
               left: `${Math.random() * 100}%`, 
-              top: '110%' // Start below screen
+              y: '110vh' // Start below screen
             }}
             animate={{ 
-              top: ['110%', '-10%'],
+              y: ['110vh', '-10vh'],
               x: [0, (Math.random() > 0.5 ? 1 : -1) * 150],
               opacity: [0, 1, 1, 0] 
             }}

@@ -3,7 +3,7 @@ import { ChevronDown } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden z-10">
+    <section className="relative w-full min-h-[85svh] md:h-screen flex flex-col items-center justify-center overflow-hidden z-10">
       <div className="text-center px-6 max-w-4xl mx-auto mt-20">
         <h4 className="font-sans text-(--color-charcoal)/80 uppercase tracking-[0.3em] text-sm md:text-base mb-6 font-semibold">
           {trekInfo.region}

@@ -57,7 +57,7 @@ export function CheckpointCard({ checkpoint }: CheckpointCardProps) {
         <div className="relative w-full h-48 md:h-56 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-t from-(--color-charcoal)/90 to-transparent z-10" />
           <motion.div 
-            className="w-full h-full"
+            className="relative w-full h-full"
             animate={{ scale: isExpanded ? 1.05 : 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
@@ -119,15 +119,17 @@ export function CheckpointCard({ checkpoint }: CheckpointCardProps) {
           </motion.div>
         </motion.div>
 
-        <AnimatePresence>
+        <AnimatePresence initial={false}>
           {isExpanded && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="pt-6"
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="overflow-hidden"
             >
-              <p className="text-(--color-mist)/90 leading-relaxed font-sans text-base md:text-lg mb-6 font-light">
+              <div className="pt-6">
+                <p className="text-(--color-mist)/90 leading-relaxed font-sans text-base md:text-lg mb-6 font-light">
                 {checkpoint.description}
               </p>
 
@@ -155,6 +157,7 @@ export function CheckpointCard({ checkpoint }: CheckpointCardProps) {
                   ))}
                 </div>
               )}
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

@@ -39,11 +39,11 @@ export function StoryInterstitial({ text }: StoryInterstitialProps) {
   }, [text]);
 
   return (
-    <div className="min-h-[70vh] flex items-center justify-center py-24 relative texture-overlay">
-      <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+    <div className="min-h-[40vh] md:min-h-[70vh] flex items-center justify-center py-16 md:py-24 relative texture-overlay">
+      <div className="max-w-4xl mx-auto px-6 text-center relative z-10 mb-12 md:mb-0">
         <p 
           ref={textRef}
-          className="text-4xl md:text-5xl lg:text-6xl font-serif text-(--color-mist) leading-tight md:leading-tight"
+          className="text-4xl md:text-5xl lg:text-6xl font-serif text-white leading-tight md:leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]"
         >
           {text}
         </p>

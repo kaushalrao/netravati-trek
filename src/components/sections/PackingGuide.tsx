@@ -107,10 +107,10 @@ export function PackingGuide() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.95 }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="relative w-full max-w-4xl max-h-full bg-(--color-charcoal) rounded-3xl md:rounded-[2.5rem] shadow-2xl border border-white/10 overflow-hidden flex flex-col"
+              className="relative w-full max-w-4xl h-[90dvh] md:h-auto md:max-h-[85dvh] bg-(--color-charcoal) rounded-3xl md:rounded-[2.5rem] shadow-2xl border border-white/10 flex flex-col overflow-hidden"
             >
               {/* Modal Header */}
-              <div className="sticky top-0 z-20 flex justify-between items-center p-6 md:p-8 bg-(--color-charcoal) border-b border-white/5">
+              <div className="shrink-0 z-20 flex justify-between items-center p-6 md:p-8 bg-(--color-charcoal) border-b border-white/5">
                 <div>
                   <h2 className="text-3xl md:text-4xl font-serif text-(--color-mist)">Things To Carry</h2>
                   <p className="text-sm md:text-base text-white/50 font-sans mt-1">Pack smart. Travel light. Stay dry.</p>
@@ -124,7 +124,7 @@ export function PackingGuide() {
               </div>
 
               {/* Scrollable Content Area */}
-              <div className="overflow-y-auto flex-1 p-6 md:p-8 pb-32 custom-scrollbar overscroll-contain transform-gpu">
+              <div className="overflow-y-auto flex-1 min-h-0 p-6 md:p-8 custom-scrollbar overscroll-contain transform-gpu">
                 
                 {/* Monsoon Advisory */}
                 <div className="bg-orange-900/20 border border-orange-500/30 rounded-3xl p-6 md:p-8 mb-12 flex flex-col md:flex-row gap-6 items-start">
@@ -282,8 +282,8 @@ export function PackingGuide() {
 
               </div>
 
-              {/* Sticky Progress Bar at bottom of Modal */}
-              <div className="absolute bottom-0 left-0 w-full bg-(--color-charcoal) border-t border-white/10 p-5 md:p-6 z-20">
+              {/* Progress Bar at bottom of Modal */}
+              <div className="shrink-0 w-full bg-(--color-charcoal) border-t border-white/10 p-5 md:p-6 z-20">
                 <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
                   <div className="flex justify-between w-full md:w-auto items-center gap-4">
                     <span className="font-sans text-[10px] md:text-xs uppercase tracking-widest text-(--color-dawn)">

@@ -77,13 +77,13 @@ export function TimelineDay({ dayNumber, title, subtitle, checkpoints, metadata 
   const colors = themeColors[metadata.theme];
 
   return (
-    <section ref={sectionRef} className="relative w-full max-w-5xl mx-auto px-4 md:px-6 py-24 z-10">
+    <section ref={sectionRef} className="relative w-full max-w-5xl mx-auto px-4 md:px-6 py-12 md:py-24 z-10">
       
       {/* --- CHAPTER COVER --- */}
       <div 
         ref={coverRef}
         className={clsx(
-          "relative w-full min-h-[65vh] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl mb-24 border border-white/10 flex flex-col justify-between",
+          "relative w-full min-h-[75svh] md:min-h-[65vh] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl mb-12 md:mb-24 border border-white/10 flex flex-col justify-between",
           metadata.theme === "forest" ? "bg-gradient-to-b from-[#1a2920] to-[#0a110d]" :
           metadata.theme === "exploration" ? "bg-gradient-to-b from-[#2c4e5c] to-[#12232b]" :
           "bg-gradient-to-b from-[#b87c4c] to-[#4a301f]"
@@ -104,23 +104,22 @@ export function TimelineDay({ dayNumber, title, subtitle, checkpoints, metadata 
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {metadata.theme === "forest" && (
             <>
-              <motion.svg style={{ y: y3 }} viewBox="0 0 1440 320" className="absolute bottom-12 w-full h-auto opacity-30 fill-(--color-moss)"><path d="M0,160 C300,50 600,250 1440,100 L1440,320 L0,320 Z" /></motion.svg>
-              <motion.svg style={{ y: y2 }} viewBox="0 0 1440 320" className="absolute bottom-0 w-[150vw] -ml-[25vw] h-auto opacity-60 fill-[#122318]"><path d="M0,200 C400,300 800,100 1440,250 L1440,320 L0,320 Z" /></motion.svg>
+              <motion.svg style={{ y: y3 }} viewBox="0 0 1440 320" className="absolute bottom-0 w-full h-auto opacity-30 fill-(--color-moss) transform-gpu scale-y-[1.2] origin-bottom"><path d="M0,160 C300,50 600,250 1440,100 L1440,320 L0,320 Z" /></motion.svg>
+              <motion.svg style={{ y: y2 }} viewBox="0 0 1440 320" className="absolute bottom-0 w-[150vw] -ml-[25vw] h-auto opacity-60 fill-[#122318] transform-gpu"><path d="M0,200 C400,300 800,100 1440,250 L1440,320 L0,320 Z" /></motion.svg>
             </>
           )}
           {metadata.theme === "exploration" && (
             <>
-              <motion.svg style={{ y: y3 }} viewBox="0 0 1440 320" className="absolute bottom-20 w-[120vw] h-auto opacity-40 fill-[#5ba6c7]"><path d="M0,100 L100,200 L300,50 L500,250 L700,100 L1000,300 L1440,50 L1440,320 L0,320 Z" /></motion.svg>
-              <motion.svg style={{ y: y2 }} viewBox="0 0 1440 320" className="absolute bottom-0 w-[150vw] -ml-[25vw] h-auto opacity-70 fill-[#1a3845]"><path d="M0,250 C300,100 600,300 1440,200 L1440,320 L0,320 Z" /></motion.svg>
+              <motion.svg style={{ y: y3 }} viewBox="0 0 1440 320" className="absolute bottom-0 w-[120vw] h-auto opacity-40 fill-[#5ba6c7] transform-gpu scale-y-[1.2] origin-bottom"><path d="M0,100 L100,200 L300,50 L500,250 L700,100 L1000,300 L1440,50 L1440,320 L0,320 Z" /></motion.svg>
+              <motion.svg style={{ y: y2 }} viewBox="0 0 1440 320" className="absolute bottom-0 w-[150vw] -ml-[25vw] h-auto opacity-70 fill-[#1a3845] transform-gpu"><path d="M0,250 C300,100 600,300 1440,200 L1440,320 L0,320 Z" /></motion.svg>
             </>
           )}
           {metadata.theme === "farewell" && (
             <>
-              <motion.svg style={{ y: y3 }} viewBox="0 0 1440 320" className="absolute bottom-16 w-full h-auto opacity-40 fill-[#e8a368]"><path d="M0,250 Q300,50 600,200 T1440,150 L1440,320 L0,320 Z" /></motion.svg>
-              <motion.svg style={{ y: y2 }} viewBox="0 0 1440 320" className="absolute bottom-0 w-[120vw] h-auto opacity-80 fill-[#4a301f]"><path d="M0,300 Q400,150 800,250 T1440,200 L1440,320 L0,320 Z" /></motion.svg>
+              <motion.svg style={{ y: y3 }} viewBox="0 0 1440 320" className="absolute bottom-0 w-full h-auto opacity-40 fill-[#e8a368] transform-gpu scale-y-[1.2] origin-bottom"><path d="M0,250 Q300,50 600,200 T1440,150 L1440,320 L0,320 Z" /></motion.svg>
+              <motion.svg style={{ y: y2 }} viewBox="0 0 1440 320" className="absolute bottom-0 w-[120vw] h-auto opacity-80 fill-[#4a301f] transform-gpu"><path d="M0,300 Q400,150 800,250 T1440,200 L1440,320 L0,320 Z" /></motion.svg>
             </>
           )}
-          <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black/60 to-transparent" />
         </div>
 
         {/* Cover Content */}
