@@ -1,4 +1,5 @@
 import { Hero } from "@/components/sections/Hero";
+import { TrekGuides } from "@/components/sections/TrekGuides";
 import { TimelineDay } from "@/components/sections/TimelineDay";
 import { ExpeditionHUD } from "@/components/ui/ExpeditionHUD";
 import { DesktopSidebar } from "@/components/ui/DesktopSidebar";
@@ -21,6 +22,7 @@ export default function Home() {
         <div className="fixed inset-0 pointer-events-none bg-gradient-to-b from-transparent to-(--color-canopy) z-0 opacity-20" />
 
         <Hero />
+        <TrekGuides />
         <ExpeditionHUD />
         <PackingGuide />
 
