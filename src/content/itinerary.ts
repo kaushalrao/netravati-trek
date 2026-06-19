@@ -31,7 +31,7 @@ export const itinerary: Checkpoint[] = [
   {
     id: "d1-mudigere",
     day: 1,
-    time: "05:00 AM",
+    time: "05:30 AM",
     title: "Arrival & Pickup",
     location: "Mudigere Bus Stand",
     elevationM: 980,
@@ -43,15 +43,15 @@ export const itinerary: Checkpoint[] = [
   {
     id: "d1-samse",
     day: 1,
-    time: "07:00 AM",
+    time: "07:30 AM",
     title: "Basecamp Briefing",
     location: "Samse Homestay",
     elevationM: 850,
     distanceKm: 0,
     description: "Freshen up, enjoy a traditional Malnad breakfast, and attend the trek briefing.",
-    tags: ["meal", "briefing"],
+    tags: ["breakfast", "briefing"],
     imageUrl: "/illustrations/homestay_vector.png",
-    funFact: "Malnad cuisine heavily features akki rotti and locally grown spices."
+    funFact: ""
   },
   {
     id: "d1-checkpost",
@@ -83,7 +83,7 @@ export const itinerary: Checkpoint[] = [
     day: 1,
     time: "01:00 PM",
     title: "Above the Clouds",
-    location: "False Peak",
+    location: "Netravati Peak",
     elevationM: 1400,
     distanceKm: 6.0,
     description: "Breaking through the tree line. The wind picks up as we walk the final ridge.",
@@ -112,7 +112,7 @@ export const itinerary: Checkpoint[] = [
     elevationM: 850,
     distanceKm: 14.0,
     description: "Return to the homestay as the sun sets. Rest your legs.",
-    tags: ["descent", "rest"],
+    tags: ["descent", "rest", "dinner"],
     imageUrl: "/illustrations/viewpoint_vector.png"
   },
 
@@ -121,24 +121,24 @@ export const itinerary: Checkpoint[] = [
   {
     id: "d2-sunrise",
     day: 2,
-    time: "05:30 AM",
+    time: "07:30 AM",
     title: "Morning Light",
     location: "Samse Homestay",
     elevationM: 850,
     distanceKm: 14.0,
     description: "Wake up to birdsong and the aroma of fresh coffee.",
-    tags: ["morning", "coffee"],
+    tags: ["morning", "breakfast"],
     imageUrl: "/illustrations/homestay_vector.png"
   },
   {
     id: "d2-maidadi",
     day: 2,
-    time: "08:30 AM",
+    time: "10:30 AM",
     title: "Valley Views",
     location: "Maidadi View Point",
     elevationM: 1050,
     distanceKm: 16.0,
-    description: "A short drive/hike to a 360-degree viewpoint over the ranges.",
+    description: "A short drive/hike to maidadi view point 360-degree viewpoint over the ranges.",
     tags: ["viewpoint"],
     imageUrl: "/illustrations/viewpoint_vector.png"
   },
@@ -146,7 +146,7 @@ export const itinerary: Checkpoint[] = [
     id: "d2-kodige",
     day: 2,
     time: "11:00 AM",
-    title: "Forest Waters",
+    title: "Kodige Water Falls",
     location: "Kodige Falls",
     elevationM: 920,
     distanceKm: 17.5,
@@ -163,14 +163,26 @@ export const itinerary: Checkpoint[] = [
     location: "Local Village",
     elevationM: 900,
     distanceKm: 18.0,
-    description: "Authentic banana-leaf Malnad lunch.",
+    description: "Authentic Malnad lunch.",
     tags: ["lunch", "culture"],
     imageUrl: "/illustrations/homestay_vector.png"
   },
   {
+    id: "d2-tea-estate",
+    day: 2,
+    time: "02:30 PM",
+    title: "Tea Estate",
+    location: "Tea Estate",
+    elevationM: 900,
+    distanceKm: 18.0,
+    description: "Relaxing walk in the kelagur tea estate.",
+    tags: ["tea-estate"],
+    imageUrl: "/illustrations/tea_estate_vector.png"
+  },
+  {
     id: "d2-estate",
     day: 2,
-    time: "04:30 PM",
+    time: "05:30 PM",
     title: "Coffee Country",
     location: "Milan Farm Stay",
     elevationM: 950,
@@ -210,6 +222,7 @@ export const itinerary: Checkpoint[] = [
   {
     id: "d3-checkout",
     day: 3,
+    time: "10:00 AM",
     title: "Farewell to the Mountains",
     location: "Mudigere Bus Stand",
     elevationM: 980,

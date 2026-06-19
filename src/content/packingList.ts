@@ -35,7 +35,6 @@ export const packingCategories: PackingCategory[] = [
     id: "cat-essentials",
     title: "Trekking Essentials",
     items: [
-      { id: "te-1", name: "Headlamp / Torch", description: "Useful during power outages and night walks." },
       { id: "te-2", name: "Power Bank", description: "Network and GPS usage drain batteries quickly." },
       { id: "te-3", name: "Cap / Hat", description: "For sun protection when weather clears." },
       { id: "te-4", name: "Sunglasses", description: "Optional but useful at viewpoints." },
@@ -69,7 +68,6 @@ export const packingCategories: PackingCategory[] = [
     items: [
       { id: "op-1", name: "Energy Bars", description: "Quick energy during the trek." },
       { id: "op-2", name: "Chocolates", description: "Useful for energy boosts." },
-      { id: "op-3", name: "Lightweight Gloves", description: "Helpful during wet conditions." },
       { id: "op-4", name: "Small Garbage Bag", description: "Leave no trace. Carry back personal waste." }
     ]
   }
@@ -80,6 +78,5 @@ export const prohibitedItems = [
   "Expensive jewellery",
   "Heavy clothing",
   "Excessive luggage",
-  "Single-use plastics",
-  "Bluetooth speakers"
+  "Single-use plastics"
 ];
