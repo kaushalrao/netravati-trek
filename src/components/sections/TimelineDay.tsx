@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Checkpoint } from "@/content/itinerary";
 import { CheckpointCard } from "@/components/ui/CheckpointCard";
 import gsap from "gsap";
@@ -29,6 +29,7 @@ interface TimelineDayProps {
 }
 
 export function TimelineDay({ dayNumber, title, subtitle, checkpoints, metadata }: TimelineDayProps) {
+  const [expandedCardId, setExpandedCardId] = useState<string | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const coverRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -83,7 +84,7 @@ export function TimelineDay({ dayNumber, title, subtitle, checkpoints, metadata 
       <div 
         ref={coverRef}
         className={clsx(
-          "relative w-full min-h-[75svh] md:min-h-[65vh] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl mb-12 md:mb-24 border border-white/10 flex flex-col lg:grid lg:grid-cols-12",
+          "relative w-full min-h-[45svh] md:min-h-[65vh] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl mb-12 md:mb-24 border border-white/10 flex flex-col lg:grid lg:grid-cols-12",
           metadata.theme === "forest" ? "bg-gradient-to-b from-[#1a2920] to-[#0a110d]" :
           metadata.theme === "exploration" ? "bg-gradient-to-b from-[#2c4e5c] to-[#12232b]" :
           "bg-gradient-to-b from-[#b87c4c] to-[#4a301f]"
@@ -91,8 +92,8 @@ export function TimelineDay({ dayNumber, title, subtitle, checkpoints, metadata 
       >
         {/* Right Side Backgrounds (Desktop) / Full Background (Mobile) */}
         <div className="absolute inset-0 lg:left-auto lg:w-[60%] lg:h-full lg:relative pointer-events-none lg:col-span-7 lg:col-start-6">
-        {/* Topographic Noise Texture */}
-        <div className="absolute inset-0 opacity-10 mix-blend-overlay pointer-events-none" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")" }} />
+        {/* Topographic Noise Texture (Hidden on mobile for performance) */}
+        <div className="hidden md:block absolute inset-0 opacity-10 mix-blend-overlay pointer-events-none" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")" }} />
 
         {/* Topographic SVG Lines (Abstract) */}
         <svg className="absolute inset-0 w-full h-full opacity-10 pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -244,7 +245,11 @@ export function TimelineDay({ dayNumber, title, subtitle, checkpoints, metadata 
               className={`w-full flex ${idx % 2 === 0 ? 'md:justify-start lg:justify-end' : 'md:justify-end lg:justify-end'}`}
             >
               <div className="w-full md:w-[60%] lg:w-[85%]">
-                <CheckpointCard checkpoint={cp} />
+                <CheckpointCard 
+                  checkpoint={cp} 
+                  isExpanded={expandedCardId === cp.id}
+                  onToggle={() => setExpandedCardId(prev => prev === cp.id ? null : cp.id)}
+                />
               </div>
             </div>
           ))}

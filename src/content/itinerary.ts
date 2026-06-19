@@ -126,7 +126,7 @@ export const itinerary: Checkpoint[] = [
     location: "Samse Homestay",
     elevationM: 850,
     distanceKm: 14.0,
-    description: "Wake up to birdsong and the aroma of fresh coffee.",
+    description: "Wake up to birdsong and the aroma of fresh coffee and breakfast.",
     tags: ["morning", "breakfast"],
     imageUrl: "/illustrations/homestay_vector.png"
   },
@@ -187,7 +187,7 @@ export const itinerary: Checkpoint[] = [
     location: "Milan Farm Stay",
     elevationM: 950,
     distanceKm: 20.0,
-    description: "Check into our private estate. Sunset views over the plantation.",
+    description: "Check into our private cofee plantation estate.",
     tags: ["estate", "sunset"],
     imageUrl: "https://a0.muscache.com/im/pictures/hosting/Hosting-804934854034152061/original/f6b1df9e-a5d3-4ff2-853d-0812dfa7e5ec.jpeg?im_w=720&width=720&quality=70&auto=webp",
     link: "https://www.airbnb.co.in/rooms/804934854034152061"
@@ -200,7 +200,7 @@ export const itinerary: Checkpoint[] = [
     location: "Milan Farm Stay",
     elevationM: 950,
     distanceKm: 20.0,
-    description: "Dinner, firepit, and night ambience in the estate. Stargazing and group wind-down.",
+    description: "Dinner, firecamp (if weather permits), and night ambience in the estate. Stargazing and group wind-down.",
     tags: ["dinner", "campfire"],
     imageUrl: "/illustrations/campfire_vector.png",
     link: "https://www.airbnb.co.in/rooms/804934854034152061"

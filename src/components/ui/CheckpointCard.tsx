@@ -6,38 +6,22 @@ import { Clock, MapPin, Mountain, ChevronDown, Sparkles, ExternalLink } from "lu
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import clsx from "clsx";
 import Image from "next/image";
-import confetti from "canvas-confetti";
 
 interface CheckpointCardProps {
   checkpoint: Checkpoint;
+  isExpanded?: boolean;
+  onToggle?: () => void;
 }
 
-export function CheckpointCard({ checkpoint }: CheckpointCardProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
+export function CheckpointCard({ checkpoint, isExpanded = false, onToggle }: CheckpointCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(cardRef, { once: true, amount: 0.5 });
 
   useEffect(() => {
     if (isInView && checkpoint.id === "d1-summit") {
-      const duration = 3 * 1000;
-      const animationEnd = Date.now() + duration;
-      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 100 };
-
-      const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
-
-      const interval: any = setInterval(function() {
-        const timeLeft = animationEnd - Date.now();
-
-        if (timeLeft <= 0) {
-          return clearInterval(interval);
-        }
-
-        const particleCount = 50 * (timeLeft / duration);
-        confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
-        confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
-      }, 250);
-      
-      return () => clearInterval(interval);
+      if (typeof navigator !== 'undefined' && navigator.vibrate) {
+        navigator.vibrate([30, 50, 30, 50, 50]);
+      }
     }
   }, [isInView, checkpoint.id]);
 
@@ -45,10 +29,20 @@ export function CheckpointCard({ checkpoint }: CheckpointCardProps) {
     <motion.div 
       ref={cardRef}
       layout
-      onClick={() => setIsExpanded(!isExpanded)}
+      animate={checkpoint.id === "d1-summit" ? {
+        boxShadow: ["0px 0px 10px rgba(251,191,36,0.1)", "0px 0px 30px rgba(251,191,36,0.5)", "0px 0px 10px rgba(251,191,36,0.1)"],
+        borderColor: ["rgba(255,255,255,0.1)", "rgba(251,191,36,0.8)", "rgba(255,255,255,0.1)"]
+      } : {}}
+      transition={checkpoint.id === "d1-summit" ? { duration: 2, repeat: Infinity, ease: "easeInOut" } : {}}
+      onClick={() => {
+        if (typeof navigator !== 'undefined' && navigator.vibrate) {
+          navigator.vibrate(10);
+        }
+        if (onToggle) onToggle();
+      }}
       className={clsx(
         "relative z-10 w-full max-w-lg lg:max-w-none rounded-3xl backdrop-blur-xl border border-white/10 cursor-pointer overflow-hidden group",
-        "bg-(--color-charcoal)/90 shadow-2xl transition-all duration-300 hover:bg-(--color-moss)/40 lg:hover:scale-[1.02] lg:hover:border-white/30 texture-overlay",
+        "bg-(--color-charcoal)/90 shadow-2xl transition-colors duration-300 hover:bg-(--color-moss)/40 lg:hover:border-white/30 texture-overlay",
         "mb-12 ml-auto flex flex-col"
       )}
     >

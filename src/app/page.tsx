@@ -34,15 +34,15 @@ export default function Home() {
             checkpoints={day1Checkpoints}
             metadata={{
               elevationGain: "+850m",
-              distance: "12 km",
-              duration: "6 Hours",
+              distance: "11 km trek",
+              duration: "6-7 Hours",
               terrain: ["Forest", "River", "Ridge"],
               theme: "forest",
               highlights: ["Forest Trails", "River Traverses", "Summit Push"]
             }}
           />
 
-          <StoryInterstitial text="A quiet night under the stars. Tomorrow, we chase the sun." align="right" />
+          <StoryInterstitial text="A quiet night under the stars. Tomorrow, we chase the waterfall." align="right" />
 
           <TimelineDay
             dayNumber={2}
@@ -51,8 +51,8 @@ export default function Home() {
             checkpoints={day2Checkpoints}
             metadata={{
               elevationGain: "+420m",
-              distance: "8 km",
-              duration: "4 Hours",
+              distance: "2 km trek",
+              duration: "7-8 Hours",
               terrain: ["Valleys", "Waterfalls", "Viewpoints"],
               theme: "exploration",
               highlights: ["Hidden Falls", "Valley Descent", "Campfire Night"]

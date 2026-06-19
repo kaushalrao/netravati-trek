@@ -5,7 +5,7 @@ import { Sparkles, Map } from "lucide-react";
 
 export function JourneyEnd() {
   return (
-    <section className="relative w-full min-h-[40vh] md:min-h-[70vh] flex flex-col items-center justify-center text-center px-6 py-16 md:py-24 z-10">
+    <section className="relative w-full flex flex-col items-center justify-center text-center px-6 py-12 md:py-16 z-10">
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -13,7 +13,7 @@ export function JourneyEnd() {
         viewport={{ once: true, margin: "-100px" }}
         className="max-w-2xl mx-auto flex flex-col items-center"
       >
-        <div className="w-[1px] h-12 md:h-24 bg-gradient-to-b from-transparent to-(--color-charcoal)/30 mb-6 md:mb-8" />
+        <div className="w-[1px] h-8 md:h-12 bg-gradient-to-b from-transparent to-(--color-charcoal)/30 mb-4 md:mb-6" />
         
         <div className="flex items-center gap-3 text-(--color-charcoal)/80 mb-6 bg-(--color-charcoal)/5 px-6 py-2 rounded-full border border-(--color-charcoal)/10">
           <Map size={16} />

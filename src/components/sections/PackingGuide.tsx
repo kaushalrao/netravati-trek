@@ -42,6 +42,12 @@ export function PackingGuide() {
     return () => { document.body.style.overflow = "unset"; };
   }, [isOpen]);
 
+  useEffect(() => {
+    const handleOpen = () => setIsOpen(true);
+    window.addEventListener('open-packing-guide', handleOpen);
+    return () => window.removeEventListener('open-packing-guide', handleOpen);
+  }, []);
+
   const toggleItem = (id: string) => {
     setPackedItems(prev => {
       const next = new Set(prev);
@@ -74,7 +80,7 @@ export function PackingGuide() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-36 right-6 md:bottom-40 md:right-10 z-[60] bg-(--color-charcoal) text-(--color-dawn) border border-orange-500/30 shadow-[0_0_30px_rgba(255,183,3,0.2)] p-4 rounded-full flex items-center justify-center group hover:bg-black transition-colors"
+        className="hidden lg:flex fixed bottom-36 right-6 md:bottom-40 md:right-10 z-[60] bg-(--color-charcoal) text-(--color-dawn) border border-orange-500/30 shadow-[0_0_30px_rgba(255,183,3,0.2)] p-4 rounded-full items-center justify-center group hover:bg-black transition-colors"
       >
         {/* Pulsing Ring */}
         <div className="absolute inset-0 rounded-full border border-orange-500/50 animate-ping opacity-50" />
