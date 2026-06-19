@@ -42,7 +42,7 @@ export function CheckpointCard({ checkpoint, isExpanded = false, onToggle }: Che
       }}
       className={clsx(
         "relative z-10 w-full max-w-lg lg:max-w-none rounded-3xl backdrop-blur-xl border border-white/10 cursor-pointer overflow-hidden group",
-        "bg-(--color-charcoal)/90 shadow-2xl transition-colors duration-300 hover:bg-(--color-moss)/40 lg:hover:border-white/30 texture-overlay",
+        "bg-(--color-charcoal)/90 shadow-2xl transition-all duration-300 hover:bg-[#0a110d] lg:hover:border-white/20 texture-overlay",
         "mb-12 ml-auto flex flex-col"
       )}
     >

@@ -1,6 +1,7 @@
 import { Hero } from "@/components/sections/Hero";
 import { TrekGuides } from "@/components/sections/TrekGuides";
 import { TimelineDay } from "@/components/sections/TimelineDay";
+import { GreenPledge } from "@/components/sections/GreenPledge";
 import { ExpeditionHUD } from "@/components/ui/ExpeditionHUD";
 import { DesktopSidebar } from "@/components/ui/DesktopSidebar";
 import { StoryInterstitial } from "@/components/ui/StoryInterstitial";
@@ -78,8 +79,11 @@ export default function Home() {
             }}
           />
 
+        <div className="px-4 pb-16">
+          <GreenPledge />
           <JourneyEnd />
         </div>
+      </div>
       </div>
     </main>
   );

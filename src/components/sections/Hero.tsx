@@ -133,21 +133,6 @@ export function Hero() {
           <span className="font-sans text-sm tracking-[0.2em] uppercase font-bold">Things to Carry</span>
         </motion.button>
 
-        {/* SCROLL CUE */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.5 }}
-          className="flex flex-col items-center gap-2"
-        >
-          <div className="w-[1px] h-12 bg-gradient-to-b from-white/20 to-transparent relative overflow-hidden">
-            <motion.div 
-              animate={{ y: ["-100%", "200%"] }}
-              transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-              className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-transparent via-orange-400 to-transparent"
-            />
-          </div>
-        </motion.div>
       </motion.div>
 
 
