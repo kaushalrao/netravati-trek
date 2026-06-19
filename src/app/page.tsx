@@ -79,11 +79,11 @@ export default function Home() {
             }}
           />
 
-        <div className="px-4 pb-16">
-          <GreenPledge />
-          <JourneyEnd />
+          <div className="px-4 pb-16">
+            <GreenPledge />
+            <JourneyEnd />
+          </div>
         </div>
-      </div>
       </div>
     </main>
   );

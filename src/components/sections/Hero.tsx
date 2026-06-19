@@ -13,7 +13,7 @@ export function Hero() {
   });
 
   return (
-    <section ref={containerRef} className="relative w-full h-[90svh] md:h-screen flex flex-col items-center justify-between overflow-hidden z-10 bg-gradient-to-b from-[#1a2920] to-[#0a110d] pt-24 pb-8">
+    <section ref={containerRef} className="relative w-full min-h-[100svh] flex flex-col items-center justify-center gap-12 overflow-hidden z-10 bg-gradient-to-b from-[#1a2920] to-[#0a110d] pt-32 pb-48">
       
       {/* BACKGROUND: Topographic Contour */}
       <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")" }} />
@@ -107,7 +107,7 @@ export function Hero() {
 
       {/* JOURNEY PREVIEW & CTA */}
       <motion.div 
-        className="relative z-20 w-full px-4 pb-36 md:pb-20 flex flex-col items-center gap-6 mt-auto"
+        className="relative z-20 w-full px-4 flex flex-col items-center gap-6"
       >
         <motion.div 
           initial={{ opacity: 0 }}
