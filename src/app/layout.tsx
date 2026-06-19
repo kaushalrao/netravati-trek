@@ -14,7 +14,18 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: "Netravati Peak Expedition",
-  description: "An immersive journey through the Western Ghats",
+  description: "Cross rivers, chase waterfalls, and stand above the clouds at Netravati Peak.",
+  openGraph: {
+    title: "Netravati Peak Expedition",
+    description: "Join us for an immersive 3-day journey through the pristine forests and waterfalls of the Western Ghats.",
+    type: "website",
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Netravati Peak Expedition",
+    description: "Join us for an immersive 3-day journey through the pristine forests and waterfalls of the Western Ghats.",
+  }
 };
 
 export default function RootLayout({
