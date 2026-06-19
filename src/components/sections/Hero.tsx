@@ -107,7 +107,7 @@ export function Hero() {
 
       {/* JOURNEY PREVIEW & CTA */}
       <motion.div 
-        className="relative z-20 w-full px-4 pb-20 flex flex-col items-center gap-6 mt-auto"
+        className="relative z-20 w-full px-4 pb-36 md:pb-20 flex flex-col items-center gap-6 mt-auto"
       >
         <motion.div 
           initial={{ opacity: 0 }}

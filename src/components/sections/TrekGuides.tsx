@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Users, Compass, ShieldCheck } from "lucide-react";
+import { Users, Compass, ShieldCheck, Laptop } from "lucide-react";
 
 export function TrekGuides() {
   return (
@@ -36,6 +36,13 @@ export function TrekGuides() {
                   <div className="text-white/50 text-[10px]">Born in the Ghats</div>
                 </div>
               </div>
+              <div className="flex items-center gap-3 bg-black/30 px-4 py-3 rounded-2xl border border-white/5">
+                <Laptop className="text-orange-400" size={20} />
+                <div className="text-left">
+                  <div className="text-white text-xs font-bold uppercase tracking-wider">Techies</div>
+                  <div className="text-white/50 text-[10px]">By Profession</div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -48,7 +55,7 @@ export function TrekGuides() {
               </div>
               <img src="/kaushal.jpg" alt="Kaushal" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
             </div>
-            <div className="aspect-[3/4] bg-black/40 rounded-2xl border border-white/10 overflow-hidden relative group mt-8">
+            <div className="aspect-[3/4] bg-black/40 rounded-2xl border border-white/10 overflow-hidden relative group">
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
               <div className="absolute bottom-4 left-4 z-20">
                 <div className="text-white font-serif text-lg">Pankaj</div>
