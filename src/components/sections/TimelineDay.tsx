@@ -30,9 +30,37 @@ interface TimelineDayProps {
 
 export function TimelineDay({ dayNumber, title, subtitle, checkpoints, metadata }: TimelineDayProps) {
   const [expandedCardId, setExpandedCardId] = useState<string | null>(null);
+  const [activeCheckpointIdx, setActiveCheckpointIdx] = useState<number>(0);
   const sectionRef = useRef<HTMLDivElement>(null);
   const coverRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = cardsRef.current.indexOf(entry.target as HTMLDivElement);
+            if (idx !== -1) {
+              setActiveCheckpointIdx(idx);
+            }
+          }
+        });
+      },
+      { rootMargin: "-30% 0px -50% 0px" } // Triggers when element crosses middle of viewport
+    );
+
+    const currentCards = cardsRef.current;
+    currentCards.forEach((card) => {
+      if (card) observer.observe(card);
+    });
+
+    return () => {
+      currentCards.forEach((card) => {
+        if (card) observer.unobserve(card);
+      });
+    };
+  }, [checkpoints]);
 
   const { scrollYProgress } = useScroll({
     target: coverRef,
@@ -225,13 +253,25 @@ export function TimelineDay({ dayNumber, title, subtitle, checkpoints, metadata 
             </div>
             
             <div className="relative pl-6 border-l-2 border-white/10 flex flex-col gap-8">
-              {checkpoints.map((cp, idx) => (
-                <div key={`route-${cp.id}`} className="relative">
-                  <div className={`absolute -left-[31px] w-4 h-4 rounded-full border-4 border-(--color-charcoal) ${idx === 0 ? 'bg-(--color-dawn)' : idx === checkpoints.length - 1 ? 'bg-(--color-moss)' : 'bg-white/40'}`} />
-                  <span className="font-sans text-sm text-white/80 font-medium">{cp.title}</span>
-                  <div className="text-xs text-white/40 mt-1 uppercase tracking-widest">{cp.time}</div>
-                </div>
-              ))}
+              {/* Animated Progress Line */}
+              <motion.div 
+                className="absolute top-0 -left-[2px] w-[2px] bg-orange-400 origin-top"
+                initial={{ height: "0%" }}
+                animate={{ height: `${checkpoints.length > 1 ? (activeCheckpointIdx / (checkpoints.length - 1)) * 100 : 0}%` }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              />
+
+              {checkpoints.map((cp, idx) => {
+                const isActive = idx === activeCheckpointIdx;
+                const isPast = idx < activeCheckpointIdx;
+                return (
+                  <div key={`route-${cp.id}`} className={`relative transition-opacity duration-300 ${isActive ? 'opacity-100' : isPast ? 'opacity-70' : 'opacity-30'}`}>
+                    <div className={`absolute -left-[31px] w-4 h-4 rounded-full border-4 border-(--color-charcoal) transition-colors duration-500 z-10 ${isActive ? 'bg-orange-400 scale-125' : isPast ? 'bg-orange-400/50' : 'bg-white/20'}`} />
+                    <span className={`font-sans text-sm font-medium transition-colors duration-300 ${isActive ? 'text-orange-400' : 'text-white'}`}>{cp.title}</span>
+                    <div className="text-xs text-white/40 mt-1 uppercase tracking-widest">{cp.time}</div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

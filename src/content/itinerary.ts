@@ -48,7 +48,7 @@ export const itinerary: Checkpoint[] = [
     location: "Samse Homestay",
     elevationM: 850,
     distanceKm: 0,
-    description: "Freshen up, enjoy a traditional Malnad breakfast, and attend the trek briefing.",
+    description: "Freshen up, enjoy the breakfast, and attend the trek briefing.",
     tags: ["breakfast", "briefing"],
     imageUrl: "/illustrations/homestay_vector.png",
     funFact: ""
